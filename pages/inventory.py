@@ -2,10 +2,9 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from locators.inventory import Locator
 
-class InventoryPage:
-    def __init__(self, driver : webdriver.Chrome | webdriver.Firefox | webdriver.Edge | webdriver.Safari):
-        self.driver = driver
+from pages.component import Component
 
+class InventoryPage(Component):
     def siteTitle(self):
         return self.driver.find_element(By.XPATH, Locator.appLogoXPath).text
 
