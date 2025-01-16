@@ -1,35 +1,44 @@
+from const.inventory import ItemCodes
+
 class Locator:
     appLogoXPath = "//div[@class='app_logo']"
     pageTitleXPath = "//span[@class='title']"
 
-    divInventoryClassXPath = ""
-    buttonAddToCartClassXPath = "//button[@id[starts-with(., 'add-to-cart')]]"
-    imageInventoryItemClassXPath = "//img[@class='inventory_item_img']" 
-    textInventoryItemClassXPath = "//div[@class='inventory_item_name']"
+    buttonAddItemToCart = {
+        ItemCodes.itemBackpack: "//button[@id='add-to-cart-sauce-labs-backpack']",
+        ItemCodes.itemBikeLight: "//button[@id='add-to-cart-sauce-labs-bike-light']",
+        ItemCodes.itemBoltTShirt: "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']",
+        ItemCodes.itemFleeceJacket: "//button[@id='add-to-cart-sauce-labs-fleece-jacket']",
+        ItemCodes.itemOnesie: "//button[@id='add-to-cart-sauce-labs-onesie']",
+        ItemCodes.itemTestAllTheThingsTShirt: "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']",
+    }
 
-    buttonAddToCartBackpackXPath = "//button[@id='add-to-cart-sauce-labs-backpack']"
-    imageBackpackXPath = "//*[@id='item_4_img_link']"
-    textBackpackXPath = "//*[@id='item_4_title_link']"
+    buttonRemoveItemFromCart = {
+        ItemCodes.itemBackpack: "//button[@id='remove-sauce-labs-backpack']",
+        ItemCodes.itemBikeLight: "//button[@id='remove-sauce-labs-bike-light']",
+        ItemCodes.itemBoltTShirt: "//button[@id='remove-sauce-labs-bolt-t-shirt']",
+        ItemCodes.itemFleeceJacket: "//button[@id='remove-sauce-labs-fleece-jacket']",
+        ItemCodes.itemOnesie: "//button[@id='remove-sauce-labs-onesie']",
+        ItemCodes.itemTestAllTheThingsTShirt: "//button[@id='remove-test.allthethings()-t-shirt-(red)']",
+    }
 
-    buttonAddToCartBikeLightXPath = "//button[@id='add-to-cart-sauce-labs-bike-light']"
-    imageBikeLightXPath = "//*[@id='item_0_img_link']"
-    textBikeLightXPath = "//*[@id='item_0_title_link']"
+    imageItemLink = {
+        ItemCodes.itemBackpack: "//a[@id='item_4_img_link']",
+        ItemCodes.itemBikeLight: "//a[@id='item_0_img_link']",
+        ItemCodes.itemBoltTShirt: "//a[@id='item_1_img_link']",
+        ItemCodes.itemFleeceJacket: "//a[@id='item_5_img_link']",
+        ItemCodes.itemOnesie: "//a[@id='item_2_img_link']",
+        ItemCodes.itemTestAllTheThingsTShirt: "//a[@id='item_3_img_link']",
+    }
 
-    buttonAddToCartBoltTShirtXPath = "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"
-    imageBoltTShirtXPath = "//*[@id='item_1_img_link']"
-    textBoltTShirtXPath = "//*[@id='item_1_title_link']"
-    
-    buttonAddToCartJacketXPath = "//button[@id='add-to-cart-sauce-labs-fleece-jacket']"
-    imageJacketXPath = "//*[@id='item_5_img_link']"
-    textJacketXPath = "//*[@id='item_5_title_link']"
-
-    buttonAddToCartOnesieXPath = "//button[@id='add-to-cart-sauce-labs-onesie']"    
-    imageOnesieXPath = "//*[@id='item_2_img_link']"
-    textOnesieXPath = "//*[@id='item_2_title_link']"
-    
-    buttonAddToCartRedTShirtXPath = "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']"
-    imageRedTShirtXPath = "//*[@id='item_3_img_link']"
-    textRedTShirtXPath = "//*[@id='item_3_title_link']"
+    textItemLink = {
+        ItemCodes.itemBackpack: "//a[@id='item_4_title_link']",
+        ItemCodes.itemBikeLight: "//a[@id='item_0_title_link']",
+        ItemCodes.itemBoltTShirt: "//a[@id='item_1_title_link']",
+        ItemCodes.itemFleeceJacket: "//a[@id='item_5_title_link']",
+        ItemCodes.itemOnesie: "//a[@id='item_2_title_link']",
+        ItemCodes.itemTestAllTheThingsTShirt: "//a[@id='item_3_title_link']",
+    }
 
     selectSortXPath = "//select[@class='product_sort_container']"
     selectSortValueAZ = "az"
