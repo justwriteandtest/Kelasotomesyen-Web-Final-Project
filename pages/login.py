@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-from selenium import webdriver
 from locators.login import Locator
 
 from pages.component import Component
