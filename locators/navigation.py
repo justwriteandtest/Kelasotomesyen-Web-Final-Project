@@ -1,5 +1,5 @@
 class Locator:
-    linkShoppingCartXPath = "//a[@class='shopping_cart_link']"
+    linkShoppingCartXPath = "//div[@id='shopping_cart_container']"
 
     buttonOpenBurgerMenuXPath = "//button[@id='react-burger-menu-btn']"
     buttonCloseBurgerMenuXPath = "//button[@id='react-burger-cross-btn']"
