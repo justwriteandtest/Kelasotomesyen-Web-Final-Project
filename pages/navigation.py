@@ -4,23 +4,23 @@ from pages.component import Component
 
 class NavBar(Component):
     def goToCart(self):
-        self.driver.find_element(By.XPATH, Locator.linkShoppingCartXPath).click()
+        self.findElementByXPath(Locator.linkShoppingCartXPath).click()
 
     def openBurgerMenu(self):
-        self.driver.find_element(By.XPATH, Locator.buttonOpenBurgerMenuXPath).click()
+        self.findElementByXPath(Locator.buttonOpenBurgerMenuXPath).click()
 
     def logOut(self):
         self.openBurgerMenu()
-        self.driver.find_element(By.XPATH, Locator.linkLogoutXPath).click()
+        self.findElementByXPath(Locator.linkLogoutXPath).click()
 
     def goToAboutPage(self):
         self.openBurgerMenu()
-        self.driver.find_element(By.XPATH, Locator.linkAboutXPath).click()
+        self.findElementByXPath(Locator.linkAboutXPath).click()
 
     def goToInventoryPage(self):
         self.openBurgerMenu()
-        self.driver.find_element(By.XPATH, Locator.linkInventoryXPath).click()
+        self.findElementByXPath(Locator.linkInventoryXPath).click()
 
     def resetAppState(self):
         self.openBurgerMenu()
-        self.driver.find_element(By.XPATH, Locator.linkResetXPath).click()
+        self.findElementByXPath(Locator.linkResetXPath).click()

@@ -7,14 +7,14 @@ from const.inventory import OpenDetailsMethods
 
 class InventoryPage(Component):
     def siteTitle(self):
-        return self.driver.find_element(By.XPATH, Locator.appLogoXPath).text
+        return self.findElementByXPath(Locator.appLogoXPath).text
 
     def pageTitle(self):
-        return self.driver.find_element(By.XPATH, Locator.pageTitleXPath).text
+        return self.findElementByXPath(Locator.pageTitleXPath).text
     
     def addToCart(self, item = ''):
         if item in Locator.buttonAddItemToCart.keys():
-            self.driver.find_element(By.XPATH, Locator.buttonAddItemToCart[item]).click()
+            self.findElementByXPath(Locator.buttonAddItemToCart[item]).click()
 
             print(f"Item added: {item}")
         else:
@@ -22,7 +22,7 @@ class InventoryPage(Component):
     
     def removeFromCart(self, item = ''):
         if item in Locator.buttonRemoveItemFromCart.keys():
-            self.driver.find_element(By.XPATH, Locator.buttonRemoveItemFromCart[item]).click()
+            self.findElementByXPath(Locator.buttonRemoveItemFromCart[item]).click()
 
             print(f"Item added: {item}")
         else:
@@ -32,9 +32,9 @@ class InventoryPage(Component):
         if item in Locator.imageItemLink.keys():
             match method:
                 case OpenDetailsMethods.text:
-                    self.driver.find_element(By.XPATH, Locator.textItemLink[item]).click()
+                    self.findElementByXPath(Locator.textItemLink[item]).click()
                 case OpenDetailsMethods.image:
-                    self.driver.find_element(By.XPATH, Locator.imageItemLink[item]).click()
+                    self.findElementByXPath(Locator.imageItemLink[item]).click()
 
             print(f"Visited {item}'s details page.")
         else:

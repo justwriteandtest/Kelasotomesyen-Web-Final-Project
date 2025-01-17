@@ -5,10 +5,10 @@ from pages.component import Component
 
 class ItemDetailsPage(Component):
     def addToCart(self):
-        self.driver.find_element(By.XPATH, Locator.buttonAddToCartXPath).click()
+        self.findElementByXPath(Locator.buttonAddToCartXPath).click()
 
     def removeFromCart(self):
-        self.driver.find_element(By.XPATH, Locator.buttonRemoveFromCartXPath).click()
+        self.findElementByXPath(Locator.buttonRemoveFromCartXPath).click()
 
     def backToProducts(self):
-        self.driver.find_element(By.XPATH, Locator.buttonBackXPath).click()
+        self.findElementByXPath(Locator.buttonBackXPath).click()

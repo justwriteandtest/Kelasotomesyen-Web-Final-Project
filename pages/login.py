@@ -14,4 +14,4 @@ class LoginPage (Component):
         self.driver.find_element(By.ID, Locator.btnLoginID).click()
 
     def getErrorText(self):
-        return self.driver.find_element(By.XPATH, Locator.textErrorXPath).text
+        return self.findElementByXPath(Locator.textErrorXPath).text
