@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from locators.inventory import Locator
 
 from pages.component import Component
