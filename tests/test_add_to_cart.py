@@ -62,34 +62,54 @@ def testAddToCart(browser : webdriver.Chrome | webdriver.Edge | webdriver.Firefo
         match addToCartMethod[item]:
             case AddToCartMethods.detailsPage:
                 inventory.goToPage(item)
-                details.addToCart()
-                details.backToProducts()
+                print(f"Entering {item}'s description page...")
 
+                details.addToCart()
+                print(f"Adding {item} to the cart...")
+
+                details.backToProducts()
+                print(f"Returning to 'Products' page...")
+            
             case AddToCartMethods.inventoryPage:
                 inventory.addToCart(item)
-
+                print(f"Adding {item} to cart from inventory page...")
+            
             case _:
                 pass
-        
-        print(f"{item} successfully added to cart.")
         
         cartCheck[item] = False
 
     for item in itemList.keys():
         match removeFromCartMethod[item]:
             case RemoveFromCartMethods.detailsPage:
+                print(f"Removing {item} from cart...")
+
                 inventory.goToPage(item)
+                print(f"Entering {item}'s description page.")
+
                 details.removeFromCart()
+                print(f"Clicked 'Remove from Cart' button on {item}'s page'.")
+
                 details.backToProducts()
+                print("Returning to 'Products' page.")
 
             case RemoveFromCartMethods.inventoryPage:
+                print(f"Removing {item} from cart...")
                 inventory.removeFromCart(item)
+                print(f"Clicked 'Remove from Cart' button on {item}'s card.")
 
             case RemoveFromCartMethods.cartPage:
-                navbar.goToCart()
-                cart.removeItemFromCart(item)
-                cart.continueShopping()
+                print(f"Removing {item} from cart...")
 
+                navbar.goToCart()
+                print(f"Entering cart page and searching for {item}'s card...")
+
+                cart.removeItemFromCart(item)
+                print(f"Clicked 'Remove from Cart' button on {item}'s card.")
+                
+                cart.continueShopping()
+                print("Returning to 'Products' page.")
+            
             case _:
                 pass        
 
