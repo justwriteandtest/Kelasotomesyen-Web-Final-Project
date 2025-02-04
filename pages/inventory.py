@@ -14,18 +14,14 @@ class InventoryPage(Component):
     def addToCart(self, item = ''):
         if item in Locator.buttonAddItemToCart.keys():
             self.findElementByXPath(Locator.buttonAddItemToCart[item]).click()
-
-            print(f"Item added: {item}")
         else:
-            print(f"Attempted to add {item}, but it was not on the inventory list.")
+            pass
     
     def removeFromCart(self, item = ''):
         if item in Locator.buttonRemoveItemFromCart.keys():
             self.findElementByXPath(Locator.buttonRemoveItemFromCart[item]).click()
-
-            print(f"Item added: {item}")
         else:
-            print(f"Attempted to add {item}, but it was not on the inventory list.")
+            pass
 
     def goToPage(self, item = '', method = OpenDetailsMethods.text):
         if item in Locator.imageItemLink.keys():
@@ -34,7 +30,5 @@ class InventoryPage(Component):
                     self.findElementByXPath(Locator.textItemLink[item]).click()
                 case OpenDetailsMethods.image:
                     self.findElementByXPath(Locator.imageItemLink[item]).click()
-
-            print(f"Visited {item}'s details page.")
         else:
-            print(f"Attempted to visit {item}'s details page, but it was not on the inventory list.")
+            pass
