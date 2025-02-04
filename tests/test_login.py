@@ -1,4 +1,5 @@
 import pytest
+import allure
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,48 +16,37 @@ import os
 load_dotenv(override = True)
 
 def testLoginPositive(browser : webdriver.Chrome | webdriver.Edge | webdriver.Firefox | webdriver.Safari):
-    login = LoginPage(browser)
-    inventory = InventoryPage(browser)
-    
-    username = os.getenv("USERNAME")
-    password = os.getenv("PASSWORD")    
+    with allure.step("Fill the Login Form"):
+        login = LoginPage(browser)
+        inventory = InventoryPage(browser)
+        
+        username = os.getenv("USERNAME")
+        password = os.getenv("PASSWORD")    
 
-    login.inputUsername(username)
-    login.inputPassword(password)
-    login.clickLoginButton()
+        login.inputUsername(username)
+        login.inputPassword(password)
+        login.clickLoginButton()
 
-    print("Logging in...")
+    with allure.step("Check if the inventory page is displayed"):
+        try:
+            WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, "//div[@class='app_logo']")))
 
-    try:
-        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, "//div[@class='app_logo']")))
-
-        print(f"Site title: {inventory.siteTitle()}")
-        print(f"Page title: {inventory.pageTitle()}")
-
-        assert inventory.siteTitle() == "Swag Labs"
-        assert inventory.pageTitle() == "Products"
-
-        print("Login successful.")
-    except Exception as e:
-        print("Login failed.")
-
-        print(e)
-
-        assert False
+            assert inventory.siteTitle() == "Swag Labs"
+            assert inventory.pageTitle() == "Products"
+        except Exception as e:
+            assert False
 
 @pytest.mark.parametrize("username, password, expectedMessage", loginData.negativeDataLogin)
 def testLoginNegative(browser : webdriver.Chrome | webdriver.Edge | webdriver.Firefox | webdriver.Safari, username, password, expectedMessage):
-    login = LoginPage(browser)
+    with allure.step("Fill the Login Form"):
+        login = LoginPage(browser)
 
-    login.inputUsername(username)
-    login.inputPassword(password)
-    login.clickLoginButton()
+        login.inputUsername(username)
+        login.inputPassword(password)
+        login.clickLoginButton()
 
-    errorMessage = login.getErrorText()
+    with allure.step("Check the error message"):
+        errorMessage = login.getErrorText()
 
-    print(f"Username: {username}")
-    print(f"Password: {password}")
-    print(f"Expected message: {expectedMessage}")
-    print(f"Message shown: {errorMessage}")
-
-    assert errorMessage == expectedMessage
+    with allure.step(f"Error message shown: {errorMessage}"):
+        assert errorMessage == expectedMessage
